@@ -9,59 +9,54 @@ use BackDoor\file as file;
 
 class WinLossController extends Controller
 {
-  /**
-   * Display a listing of the resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
-  public function index()
-  {
-    //
-  }
-
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
-  public function create()
-  {
-    //
-  }
-
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request $request
-   * @return \Illuminate\Http\Response
-   */
-  public function store(Request $request)
-  {
-    $uploadDir = '/var/www/BackDoor/public/upload/excel_files/';
-    $uploadFile = $uploadDir . basename($_FILES['file']['name']);
-    $tempPath = $_FILES['file']['tmp_name'];
-    $fileAttribute = [
-      'name' => $_FILES['file']['name'],
-      'type' => $_FILES['file']['type'],
-      'size' => $_FILES['file']['size'],
-      'real_path' => $uploadDir
-    ];
-
-    if (move_uploaded_file($tempPath, $uploadFile)) {
-
-      $answer = array('answer' => 'File transfer completed');
-      $json = json_encode($answer);
-
-      file::insert($fileAttribute);
-
-      return $json;
-
-    } else {
-
-      return 'No files';
+    /**
+    * Display a listing of the resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function index()
+    {
+        //
     }
 
-  }
+    /**
+    * Show the form for creating a new resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function create()
+    {
+        //
+    }
+
+    /**
+    * Store a newly created resource in storage.
+    *
+    * @param  \Illuminate\Http\Request $request
+    * @return \Illuminate\Http\Response
+    */
+    public function store(Request $request)
+    {
+        $uploadDir = public_path().'/upload/excel_files/';
+        $uploadFile = $uploadDir . basename($_FILES['file']['name']);
+        $tempPath = $_FILES['file']['tmp_name'];
+
+        if (move_uploaded_file($tempPath, $uploadFile)) {
+
+            $data = new File;
+            $data->name = $_FILES['file']['name'];
+            $data->type = $_FILES['file']['type'];
+            $data->size = $_FILES['file']['size'];
+            $data->real_path = $uploadDir;
+
+            if($data->save()) {
+                return $this->createJsonResponse(true, $data);
+            }
+
+        } else {
+            return $this->createJsonResponse(true);
+        }
+    }
 
   /**
    * Display the specified resource.
@@ -69,9 +64,16 @@ class WinLossController extends Controller
    * @param  int $id
    * @return \Illuminate\Http\Response
    */
-  public function show($id)
+  public function show($id = null)
   {
-    //
+
+      if (null != $id) {
+          $files = File::find($id);
+      } else {
+          $files =  File::all();
+      }
+
+      return $this->createJsonResponse(true, $files);
   }
 
   /**

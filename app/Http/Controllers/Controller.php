@@ -12,4 +12,12 @@ use BackDoor\WinLoss as WinLoss;
 class Controller extends BaseController
 {
     use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
+
+    public function createJsonResponse($isSuccess, $arrContent = array())
+    {
+        return response()->json(array(
+            'success' => $isSuccess,
+            'content' => $arrContent,
+        ));
+    }
 }
