@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="backdoor">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <base href="/">
+    <title>BackDoor Report</title>
+    <link rel="stylesheet" href="bower_components/toastr/toastr.css" type="text/css" />
+    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+    <link rel="stylesheet" href="bower_components/Materialize/bin/materialize.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+    <style>
+        input[type=text],
+        input[type=password]{
+            background-color: #fff;
+            border: solid 1px #000;
+            width: auto;
+            height: 2rem;
+            color:#000;
+        }
+
+        </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <!-- Menu -->
+        <div ui-view="menu"></div>
+
+        <!-- Page Layout here -->
+        <div ui-view></div>
+
+        <div ui-view="footer"></div>
+    </div>
+</div>
+
+
+
+
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/Materialize/bin/materialize.js"></script>
+<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script type="text/javascript" src="bower_components/angular-resource/angular-resource.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="route.js"></script>
+
+<!-- COMPONENTS -->
+<script type="text/javascript" src="bower_components/lodash/dist/lodash.min.js"></script>
+<script type="text/javascript" src="bower_components/js-md5/build/md5.min.js"></script>
+<script type="text/javascript" src="bower_components/moment/moment.js"></script>
+<script type="text/javascript" src="bower_components/moment-timezone/builds/moment-timezone-with-data.js"></script>
+<script type="text/javascript" src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script type="text/javascript" src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js"></script>
+<script type="text/javascript" src="bower_components/toastr/toastr.js"></script>
+<script type="text/javascript" src="bower_components/angular-file-upload/dist/angular-file-upload.js"></script>
+
+<!-- Controller -->
+<script type="text/javascript" src="components/login/loginController.js"></script>
+<script type="text/javascript" src="components/logout/logoutController.js"></script>
+<script src="components/menu/menuController.js"></script>
+<script type="text/javascript" src="components/game/gameController.js"></script>
+<script type="text/javascript" src="components/player/playerController.js"></script>
+<script type="text/javascript" src="components/winloss/winlossController.js"></script>
+<script type="text/javascript" src="components/footer/footerController.js"></script>
+
+<!-- Service -->
+<script type="text/javascript" src="components/login/loginService.js"></script>
+<script type="text/javascript" src="components/logout/logoutService.js"></script>
+<script type="text/javascript" src="components/menu/menuService.js"></script>
+<script type="text/javascript" src="components/game/gameService.js"></script>
+<script type="text/javascript" src="components/player/playerService.js"></script>
+<script type="text/javascript" src="components/winloss/winlossService.js"></script>
+<script type="text/javascript" src="components/footer/footerService.js"></script>
+</body>
+</html>
