@@ -42,7 +42,6 @@ class WinLossController extends Controller
         $uploadFile = $uploadDir . basename($_FILES['file']['name']);
         $tempPath = $_FILES['file']['tmp_name'];
 
-
         if (move_uploaded_file($tempPath, $uploadFile))
         {
             $data = new File;
@@ -53,16 +52,13 @@ class WinLossController extends Controller
             $data->real_path = $uploadDir;
 
             if($data->save()) {
-                return response()->json(array(
-                    'success' => true,
-                    'content' => $data
-                ));
+                return $this->createJsonResponse(true, $data);
             }
 
         }
         else
         {
-            return response()->json(['success' => false]);
+            return $this->createJsonResponse(true);
         }
 
     }
@@ -73,9 +69,20 @@ class WinLossController extends Controller
    * @param  int $id
    * @return \Illuminate\Http\Response
    */
-  public function show($id)
+  public function show($id = null)
   {
-    //
+
+      if (null != $id)
+      {
+          $files = File::find($id);
+      }
+      else
+      {
+          $files =  File::all();
+      }
+
+      return $this->createJsonResponse(true, $files);
+
   }
 
   /**
