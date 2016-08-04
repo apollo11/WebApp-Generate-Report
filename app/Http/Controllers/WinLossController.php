@@ -37,15 +37,13 @@ class WinLossController extends Controller
     */
     public function store(Request $request)
     {
-
         $uploadDir = public_path().'/upload/excel_files/';
         $uploadFile = $uploadDir . basename($_FILES['file']['name']);
         $tempPath = $_FILES['file']['tmp_name'];
 
-        if (move_uploaded_file($tempPath, $uploadFile))
-        {
-            $data = new File;
+        if (move_uploaded_file($tempPath, $uploadFile)) {
 
+            $data = new File;
             $data->name = $_FILES['file']['name'];
             $data->type = $_FILES['file']['type'];
             $data->size = $_FILES['file']['size'];
@@ -55,12 +53,9 @@ class WinLossController extends Controller
                 return $this->createJsonResponse(true, $data);
             }
 
-        }
-        else
-        {
+        } else {
             return $this->createJsonResponse(true);
         }
-
     }
 
   /**
@@ -72,17 +67,13 @@ class WinLossController extends Controller
   public function show($id = null)
   {
 
-      if (null != $id)
-      {
+      if (null != $id) {
           $files = File::find($id);
-      }
-      else
-      {
+      } else {
           $files =  File::all();
       }
 
       return $this->createJsonResponse(true, $files);
-
   }
 
   /**
