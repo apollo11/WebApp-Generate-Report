@@ -37,25 +37,61 @@ class WinLossController extends Controller
     */
     public function store(Request $request)
     {
-        $uploadDir = public_path().'/upload/excel_files/';
-        $uploadFile = $uploadDir . basename($_FILES['file']['name']);
-        $tempPath = $_FILES['file']['tmp_name'];
 
-        if (move_uploaded_file($tempPath, $uploadFile)) {
+      $uploadDir = public_path().'/upload/excel_files/';
+      $tempPath = $_FILES['file']['tmp_name'];
+      $fileName = $_FILES['file']['name'];
+      $fileBasename = substr($fileName, 0, strripos($fileName,'.')); // get file extension;
+      $fileExt = substr($fileName, strripos($fileName, '.')); // get file name
+      $fileSize = $_FILES['file']['size'];
+      $allowed_file_types = array('.xlsx', '.xls');
 
-            $data = new File;
-            $data->name = $_FILES['file']['name'];
-            $data->type = $_FILES['file']['type'];
-            $data->size = $_FILES['file']['size'];
-            $data->real_path = $uploadDir;
 
-            if($data->save()) {
-                return $this->createJsonResponse(true, $data);
-            }
+      if (in_array($fileExt, $allowed_file_types) && ($fileSize < 200000)) {
 
-        } else {
+        /**
+         * Rename file
+         */
+        $renameFileName = md5($fileBasename). $fileExt;
+
+        if(file_exists($uploadDir . $renameFileName)) {
+
+          return response()->json(['error'=> 'file already exist']);
+
+        }else{
+
+          /**
+           * Move uploaded file
+           */
+          move_uploaded_file($tempPath, $uploadDir.$renameFileName);
+
+          /**
+           * Save file data
+           */
+          $data = new File;
+          $data->name = $renameFileName;
+          $data->type = $_FILES['file']['type'];
+          $data->size = $fileSize;
+          $data->real_path = $uploadDir.$renameFileName;
+
+          if($data->save()) {
+
+            return $this->createJsonResponse(true, $data);
+
+          }else{
+
             return $this->createJsonResponse(true);
+
+          }
         }
+      }elseif ($fileSize > 200000) {
+
+        return response()->json(['error'=>'Entity too large']);
+
+      }else{
+
+        return response()->json(['error'=> implode(', ',$allowed_file_types)]);
+      }
     }
 
   /**
