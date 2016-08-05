@@ -32,7 +32,7 @@ class ExcelImport extends Controller
   public function insertToDb()
   {
 
-    Excel::load('/home/mike/Backdoor.xlsx', function($reader) {
+    Excel::load('Backdoor.xlsx', function($reader) {
 
       $this->winLossSheet = $reader->each(function($sheet) {
 
