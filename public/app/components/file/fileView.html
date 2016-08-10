@@ -1,0 +1,11 @@
+<div ng-controller="FileController">
+    <h1>{{title}}</h1>
+    <ul ng-repeat="data in result">
+        <li>{{data.id}}</li>
+        <li>{{data.name}}</li>
+        <li>{{data.type}}</li>
+        <li>{{data.real_path}}</li>
+        <li>{{data.created_at}}</li>
+        <li>{{data.updated_at}}</li>
+    </ul>
+</div>

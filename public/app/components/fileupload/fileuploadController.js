@@ -1,11 +1,11 @@
 /**
  * Created by apollomm on 7/28/16.
  */
-app.controller('WinLossController',['$scope', 'FileUploader','file', function($scope, FileUploader, file) {
+app.controller('FileUploadController',['$scope', 'FileUploader','file', function($scope, FileUploader, file) {
 
     var uploader = $scope.uploader = new FileUploader({
 
-        url:'http://backdoor.local/api/v1/winloss/post'
+        url:'http://backdoor.local/api/v1/file/post'
     });
 
     file.get(function (response) {

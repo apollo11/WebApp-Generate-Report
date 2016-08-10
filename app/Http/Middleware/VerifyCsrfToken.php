@@ -13,7 +13,7 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
         //
-        'api/v1/winloss/*'
+        'api/v1/file/*'
 
     ];
 }
