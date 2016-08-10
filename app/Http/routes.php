@@ -42,9 +42,15 @@ Route::get('/api/v1/insertdb', 'ExcelImport@insertToDb');
 Route::get('/api/v1/insert','insertExcelData@store');
 
 
-Route::group(['prefix'=>'api/v1/winloss'], function () {
-    Route::post('post', 'WinLossController@store');
-    Route::get('get/{type}/{id?}', 'WinLossController@show');
+Route::group(['prefix'=>'api/v1/file'], function () {
+    Route::post('post', 'FileController@store');
+    Route::get('get/{type}/{id?}', 'FileController@show');
+});
+
+Route::group(['prefix' =>'api/v1/report/winloss'], function () {
+    Route::get('get','WinLossController@index');
+    Route::get('get/{id}', 'WinLossController@show');
+
 });
 
 

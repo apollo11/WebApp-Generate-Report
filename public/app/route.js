@@ -30,13 +30,13 @@ app.config(['$stateProvider'
                 }
             })
 
-            .state('winloss', {
-                url:'/winloss',
+            .state('fileupload', {
+                url:'/fileupload',
                 parent:'root',
                 views: {
                     '@': {
-                        controller:'WinLossController',
-                        templateUrl: 'components/winloss/winlossView.html'
+                        controller:'FileUploadController',
+                        templateUrl: 'components/fileupload/fileuploadView.html'
                     }
                 }
 
@@ -86,4 +86,25 @@ app.config(['$stateProvider'
                 }
             })
 
+            .state('report', {
+                url:'/report',
+                parent:'root',
+                views: {
+                    '@': {
+                        controller:'ReportController',
+                        templateUrl:'components/report/reportView.html'
+                    }
+                }
+            })
+
+            .state('file', {
+                url:'/file/:id',
+                parent:'root',
+                views: {
+                    '@': {
+                        controller:'FileController',
+                        templateUrl:'components/file/fileView.html'
+                    }
+                }
+            })
     }]);
