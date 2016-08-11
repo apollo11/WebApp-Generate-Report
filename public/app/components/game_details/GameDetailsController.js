@@ -16,7 +16,7 @@ app.controller('GameDetailsController',
         };
 
         GameDetailsService.get($scope.param,
-            
+
             function(response) {
 
                 $scope.result = response;
@@ -26,5 +26,4 @@ app.controller('GameDetailsController',
                 console.log(error);
 
             })
-
     }]);

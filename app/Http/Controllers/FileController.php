@@ -127,7 +127,6 @@ class FileController extends Controller
         }
 
         return $this->createJsonResponse($arrData, $boolIsSuccess, $strMessage);
-
     }
 
     /**

@@ -54,7 +54,7 @@ class WinLossController extends Controller
      */
     public function show($id = null)
     {
-        // initialize necesarry fields
+        // initialize necessary fields
         $arrFields = [
             'id',
             'bet_time',

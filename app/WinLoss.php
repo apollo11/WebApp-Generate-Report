@@ -10,12 +10,11 @@ class WinLoss extends Model
 
     public function file()
     {
-
         return $this->hasOne('BackDoor\file');
     }
 
 
-    public function getData($aArrFields, $aIntId)
+    public function getData($aArrFields, $aIntId = null)
     {
         $winLoss = DB::table('win_losses')->select($aArrFields);
 
