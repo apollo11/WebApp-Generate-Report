@@ -48,9 +48,11 @@ Route::group(['prefix'=>'api/v1/file'], function () {
 });
 
 Route::group(['prefix' =>'api/v1/report/winloss'], function () {
-    Route::get('get','WinLossController@index');
-    Route::get('get/{id}', 'WinLossController@show');
+    Route::get('get/{id?}','WinLossController@show');
+});
 
+Route::group(['prefix' =>'api/v1/report/games'], function () {
+    Route::get('get/{id?}','GameController@show');
 });
 
 

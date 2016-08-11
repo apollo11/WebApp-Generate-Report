@@ -6,9 +6,9 @@ app.controller('WinLossController', ['$scope', 'WinLossService', function ($scop
 
     $scope.title = 'Win Loss';
 
-    WinLossService.query(function(response) {
+    WinLossService.get(function(response) {
 
-        $scope.result = response;
+        $scope.result = response.content;
 
     }, function (error) {
 

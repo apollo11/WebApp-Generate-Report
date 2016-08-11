@@ -106,7 +106,6 @@ class FileController extends Controller
                                     $winLoss->shuffling_method = $data->shuffling_method;
                                     $winLoss->file_name = $this->fileName;
 
-
                                     // save data
                                     $winLoss->save();
                                 }
@@ -127,8 +126,7 @@ class FileController extends Controller
             $strMessage = implode(', ', $allowed_file_types);
         }
 
-        return $this->createJsonResponse($boolIsSuccess, $arrData, $strMessage);
-
+        return $this->createJsonResponse($arrData, $boolIsSuccess, $strMessage);
     }
 
     /**
@@ -137,30 +135,14 @@ class FileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($type, $id = null)
+    public function show($id = null)
     {
-        // check type parameter
-        switch (strtolower($type)) {
-            // specific file
-            case 'file':
-                if (null != $id) {
-                    $data = File::find($id);
-                } else {
-                    $data = File::all();
-                }
-                break;
-
-            // file content
-            case 'content':
-                if (null != $id) {
-                    $data = WinLoss::find($id);
-                } else {
-                    $data = WinLoss::all();
-                }
-                break;
+        if (null != $id) {
+            $data = File::find($id);
+        } else {
+            $data = File::all();
         }
-
-        return $this->createJsonResponse(true, $data);
+        return $this->createJsonResponse($data);
     }
 
     /**
