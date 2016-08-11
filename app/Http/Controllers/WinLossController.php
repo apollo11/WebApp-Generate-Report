@@ -11,113 +11,99 @@ use DB;
 
 class WinLossController extends Controller
 {
-  protected $fileName;
+    protected $fileName;
 
-  /**
-   * Display a listing of the resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
-  public function index()
-  {
-    $field = [
-      'id',
-      'bet_time',
-      'game',
-      'effective_bet_amount',
-      'casino_win_loss',
-      'month',
-      'balance'
-    ];
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
 
-    $winLossData = DB::table('win_losses')
-      ->select($field)
-      ->get();
-
-    return response()->json($winLossData);
-  }
-
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
-  public function create()
-  {
-    //
-  }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
 
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request $request
-   * @return \Illuminate\Http\Response
-   */
-  public function store(Request $request)
-  {
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
 
-  }
+    }
 
 
-  /**
-   * Display the specified resource.
-   *
-   * @param  int $id
-   * @return \Illuminate\Http\Response
-   */
-  public function show($id)
-  {
-    $field = [
-      'id',
-      'bet_time',
-      'game',
-      'effective_bet_amount',
-      'casino_win_loss',
-      'month',
-      'balance'
-    ];
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id = null)
+    {
+        // initialize necesarry fields
+        $arrFields = [
+            'id',
+            'bet_time',
+            'game',
+            'effective_bet_amount',
+            'casino_win_loss',
+            'month',
+            'balance'
+        ];
 
-    $winLossData = DB::table('win_losses')
-      ->select($field)
-      ->where('id','=', $id)
-      ->get();
+        // get data with necessary fields only
+        $winLoss = new WinLoss();
+        $winLossData = $winLoss->getData($arrFields, $id);
 
-    return response()->json(['data'=>$winLossData]);
-  }
+        return $this->createJsonResponse($winLossData);
+    }
 
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  int $id
-   * @return \Illuminate\Http\Response
-   */
-  public function edit($id)
-  {
-    //
-  }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
 
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  \Illuminate\Http\Request $request
-   * @param  int $id
-   * @return \Illuminate\Http\Response
-   */
-  public function update(Request $request, $id)
-  {
-    //
-  }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
 
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int $id
-   * @return \Illuminate\Http\Response
-   */
-  public function destroy($id)
-  {
-    //
-  }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
 
 }

@@ -2,21 +2,21 @@
  * Created by apollomm on 8/10/16.
  */
 'use strict';
-app.controller('WinLossDetailsController',
+app.controller('GameDetailsController',
     [
         '$scope'
         ,'$stateParams'
-        ,'WinLossDetailsService'
-    , function ($scope, $stateParams, WinLossDetailsService) {
+        ,'GameDetailsService'
+        , function ($scope, $stateParams, GameDetailsService) {
 
-        $scope.title = 'Win Loss Details';
+        $scope.title = 'Game Details';
         $scope.param ={
 
             id:$stateParams.id
         };
 
-        WinLossDetailsService.get($scope.param,
-
+        GameDetailsService.get($scope.param,
+            
             function(response) {
 
                 $scope.result = response;
@@ -27,4 +27,4 @@ app.controller('WinLossDetailsController',
 
             })
 
-}]);
+    }]);

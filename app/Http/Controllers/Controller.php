@@ -13,7 +13,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
 
-    public function createJsonResponse($isSuccess, $arrContent = array(), $strMessage = '')
+    public function createJsonResponse($arrContent = array(), $isSuccess = true, $strMessage = '')
     {
         $arrResponse = array(
             'success' => $isSuccess,

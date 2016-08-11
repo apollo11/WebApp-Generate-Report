@@ -1,3 +1,35 @@
 <div ng-controller="GameController">
-    {{gameReport}}
+
+    <h1>{{title}}</h1>
+    <!--<pre>-->
+    <!--{{result | json}}-->
+    <!--</pre>-->
+
+    <table class="bordered">
+        <thead>
+        <tr>
+            <th data-field="id">ID</th>
+            <th data-field="created">Month</th>
+            <th data-field="name">Bet Time</th>
+            <th data-field="real_path">Bet Amount</th>
+            <th data-field="size">Casino Win/Loss</th>
+
+            <th data-field="updated">Balance</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="data in result">
+            <td><a ui-sref="game_details({id:data.id})">{{data.id}}</a></td>
+            <td>{{data.member}}</td>
+            <td>{{data.bet_reference}}</td>
+            <td>{{data.bet_time}}</td>
+            <td>{{data.game}}</td>
+            <td>{{data.table_number}}</td>
+            <td>{{data.effective_bet_amount}}</td>
+            <td>{{data.casino_win_loss}}</td>
+            <td>{{data.month}}</td>
+        </tr>
+        </tbody>
+    </table>
 </div>

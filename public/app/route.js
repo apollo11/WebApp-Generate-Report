@@ -129,4 +129,27 @@ app.config(['$stateProvider'
                     }
                 }
             })
+
+            .state('games', {
+                url:'/games',
+                parent:'root',
+                views: {
+                    '@': {
+                        controller:'GameController',
+                        templateUrl:'components/game/gameView.html'
+                    }
+                }
+            })
+
+            .state('game_details', {
+                url: '/game_details/:id',
+                parent:'root',
+                views: {
+                    '@': {
+                        controller:'GameDetailsController',
+                        templateUrl:'components/game_details/GameDetailsView.html'
+                    }
+                }
+            })
+
     }]);
