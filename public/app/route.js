@@ -107,4 +107,26 @@ app.config(['$stateProvider'
                     }
                 }
             })
+
+            .state('winloss', {
+                url:'/winloss',
+                parent:'root',
+                views: {
+                    '@': {
+                        controller:'WinLossController',
+                        templateUrl:'components/winloss/winlossView.html'
+                    }
+                }
+            })
+
+            .state('winlossdetails', {
+                url: '/winlossdetails/:id',
+                parent:'root',
+                views: {
+                    '@': {
+                        controller:'WinLossDetailsController',
+                        templateUrl:'components/winlossdetails/winlossdetailsView.html'
+                    }
+                }
+            })
     }]);

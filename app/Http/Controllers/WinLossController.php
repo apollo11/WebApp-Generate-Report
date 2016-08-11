@@ -83,7 +83,7 @@ class WinLossController extends Controller
       ->where('id','=', $id)
       ->get();
 
-    return response()->json($winLossData);
+    return response()->json(['data'=>$winLossData]);
   }
 
   /**
