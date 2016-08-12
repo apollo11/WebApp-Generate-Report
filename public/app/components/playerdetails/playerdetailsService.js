@@ -1,7 +1,7 @@
 'use strict';
 
-app.factory('file', ['$resource', 'BASE', function($resource, BASE) {
-    var ENDPOINT = $resource(BASE.URL + '/api/v1/file/get/:id',
+app.factory('PlayerDetailsService', ['$resource', 'BASE', function($resource, BASE) {
+    var ENDPOINT = $resource(BASE.URL + '/api/v1/report/player/get/:id',
         {
             id:'@id'
         },

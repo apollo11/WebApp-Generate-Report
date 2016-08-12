@@ -3,15 +3,12 @@
 namespace BackDoor\Http\Controllers;
 
 use Illuminate\Http\Request;
-use BackDoor\WinLoss;
-use Excel;
-use DB;
 
+use BackDoor\Http\Requests;
+use BackDoor\WinLoss as WinLoss;
 
-class WinLossController extends Controller
+class PlayerController extends Controller
 {
-    protected $fileName;
-
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +16,23 @@ class WinLossController extends Controller
      */
     public function index()
     {
-        //
+        $field = [
+            'id',
+            'member',
+            'bet_time',
+            'datetime',
+            'table_number',
+            'game',
+            'effective_bet_amount',
+            'win_loss',
+            'month'
+        ];
+
+        $playerData = DB::table('win_losses')
+          ->select($field)
+          ->get();
+
+        return response()->json($playerData);
     }
 
     /**
@@ -32,49 +45,47 @@ class WinLossController extends Controller
         //
     }
 
-
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-
+        //
     }
-
 
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id = null)
     {
-        // initialize necessary fields
         $arrFields = [
-            'id',
-            'bet_time',
-            'game',
-            'effective_bet_amount',
-            'casino_win_loss',
-            'month',
-            'balance'
+          'id',
+          'member',
+          'bet_time',
+          'datetime',
+          'table_number',
+          'game',
+          'effective_bet_amount',
+          'win_loss',
+          'month'
         ];
 
-        // get data with necessary fields only
-        $winLoss = new WinLoss();
-        $winLossData = $winLoss->getData($arrFields, $id);
+        $player = new WinLoss();
+        $playerData = $player->getData($arrFields, $id);
 
-        return $this->createJsonResponse($winLossData);
+        return $this->createJsonResponse($playerData);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -85,8 +96,8 @@ class WinLossController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -97,12 +108,11 @@ class WinLossController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
     }
-
 }

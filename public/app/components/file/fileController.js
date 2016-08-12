@@ -6,12 +6,12 @@ app.controller('FileController', ['$scope', '$stateParams', 'FileService', funct
 
     $scope.title = 'File Controller';
     $scope.param = {
-        id: $stateParams.params.id
+        id: $stateParams.id
     };
 
     FileService.geFile($scope.param, function (response) {
-        $scope.result = response;
 
+        $scope.result = response;
     },
      function (error) {
             console.log = error;

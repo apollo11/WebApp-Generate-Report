@@ -1,5 +1,36 @@
 <div ng-controller="PlayerController">
 
     {{title}}
+    <!--<pre>-->
+        <!--{{result | json}}-->
+    <!--</pre>-->
+    <table class="bordered striped">
+        <thead>
+        <tr>
+            <th data-field="id">ID</th>
+            <th data-field="member">Member</th>
+            <th data-field="bet_time">Bet Time</th>
+            <th data-field="datetime">Date</th>
+            <th data-field="table_number">Table Number</th>
+            <th data-field="game">Game</th>
+            <th data-field="effective_bet_amount">Bet Amount</th>
+            <th data-field="win_loss">Win/Loss</th>
+            <th data-field="month">Month</th>
+        </tr>
+        </thead>
 
+        <tbody>
+        <tr ng-repeat="data in result">
+            <td>{{data.id}}</td>
+            <td><a ui-sref="playerdetails({id:data.id})">{{data.member}}</a></td>
+            <td>{{data.bet_time}}</td>
+            <td>{{data.datetime}}</td>
+            <td>{{data.table_number}}</td>
+            <td>{{data.game}}</td>
+            <td>{{data.effective_bet_amount}}</td>
+            <td>{{data.win_loss}}</td>
+            <td>{{data.month}}</td>
+        </tr>
+        </tbody>
+    </table>
 </div>
