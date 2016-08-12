@@ -53,6 +53,17 @@ app.config(['$stateProvider'
                 }
             })
 
+            .state('playerdetails', {
+                url:'/playerdetails/:id',
+                parent:'root',
+                views: {
+                    '@': {
+                        controller:'PlayerDetailsController',
+                        templateUrl: 'components/playerdetails/playerdetailsView.html'
+                    }
+                }
+            })
+
             .state('game', {
                 url:'/game',
                 parent:'root',

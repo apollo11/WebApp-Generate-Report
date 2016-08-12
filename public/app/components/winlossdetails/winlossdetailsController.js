@@ -11,20 +11,14 @@ app.controller('WinLossDetailsController',
 
         $scope.title = 'Win Loss Details';
         $scope.param ={
-
             id:$stateParams.id
         };
 
         WinLossDetailsService.get($scope.param,
-
             function(response) {
-
                 $scope.result = response;
-
             }, function (error) {
-
                 console.log(error);
-
             })
 
 }]);

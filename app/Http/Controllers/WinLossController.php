@@ -3,8 +3,7 @@
 namespace BackDoor\Http\Controllers;
 
 use Illuminate\Http\Request;
-use BackDoor\file as file;
-use BackDoor\WinLoss as WinLoss;
+use BackDoor\WinLoss;
 use Excel;
 use DB;
 

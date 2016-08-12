@@ -13,38 +13,38 @@
 
 Route::get('/', function () {
 
-    return view('welcome');
+  return view('welcome');
 
 });
 
 Route::get('/winloss', function () {
 
-    return 'Win Loss Page';
+  return 'Win Loss Page';
 
 });
 
 Route::get('/games', function () {
 
-    return 'Games Report';
+  return 'Games Report';
 
 });
 
 Route::get('/player', function () {
 
-    return 'Players Report';
+  return 'Players Report';
 
 });
 
-Route::get('/api/v1/test','testDbController@show');
-Route::get('/api/v1/excelexport','ExcelExport@importToExcel');
-Route::get('/api/v1/excelimport','ExcelImport@excelImport');
+Route::get('/api/v1/test', 'testDbController@show');
+Route::get('/api/v1/excelexport', 'ExcelExport@importToExcel');
+Route::get('/api/v1/excelimport', 'ExcelImport@excelImport');
 Route::get('/api/v1/insertdb', 'ExcelImport@insertToDb');
-Route::get('/api/v1/insert','insertExcelData@store');
+Route::get('/api/v1/insert', 'insertExcelData@store');
 
 
-Route::group(['prefix'=>'api/v1/file'], function () {
-    Route::post('post', 'FileController@store');
-    Route::get('get/{type}/{id?}', 'FileController@show');
+Route::group(['prefix' => 'api/v1/file'], function () {
+  Route::post('post', 'FileController@store');
+  Route::get('get/{id?}', 'FileController@show');
 });
 
 Route::group(['prefix' =>'api/v1/report/winloss'], function () {
@@ -53,6 +53,10 @@ Route::group(['prefix' =>'api/v1/report/winloss'], function () {
 
 Route::group(['prefix' =>'api/v1/report/games'], function () {
     Route::get('get/{id?}','GameController@show');
+});
+
+Route::group(['prefix' => 'api/v1/report/player'], function () {
+  Route::get('get/{id?}', 'PlayerController@show');
 });
 
 
