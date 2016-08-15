@@ -15,27 +15,27 @@ app.config(['$stateProvider'
         $urlRouterProvider.otherwise('/');
         $stateProvider
             .state('root', {
-                abstract:true,
+                abstract: true,
                 views: {
 
                     'menu': {
-                        controller:'MenuController',
-                        templateUrl:'components/menu/menuView.html'
+                        controller: 'MenuController',
+                        templateUrl: 'components/menu/menuView.html'
                     },
 
                     'footer': {
-                        controller:'FooterController',
-                        templateUrl:'components/footer/footerView.html'
+                        controller: 'FooterController',
+                        templateUrl: 'components/footer/footerView.html'
                     }
                 }
             })
 
             .state('fileupload', {
-                url:'/fileupload',
-                parent:'root',
+                url: '/fileupload',
+                parent: 'root',
                 views: {
                     '@': {
-                        controller:'FileUploadController',
+                        controller: 'FileUploadController',
                         templateUrl: 'components/fileupload/fileuploadView.html'
                     }
                 }
@@ -43,122 +43,150 @@ app.config(['$stateProvider'
             })
 
             .state('player', {
-                url:'/player',
-                parent:'root',
+                url: '/player',
+                parent: 'root',
                 views: {
                     '@': {
-                        controller:'PlayerController',
+                        controller: 'PlayerController',
                         templateUrl: 'components/player/playerView.html'
                     }
                 }
             })
 
             .state('playerdetails', {
-                url:'/playerdetails/:id',
-                parent:'root',
+                url: '/playerdetails/:id',
+                parent: 'root',
                 views: {
                     '@': {
-                        controller:'PlayerDetailsController',
+                        controller: 'PlayerDetailsController',
                         templateUrl: 'components/playerdetails/playerdetailsView.html'
                     }
                 }
             })
 
             .state('game', {
-                url:'/game',
-                parent:'root',
+                url: '/game',
+                parent: 'root',
                 views: {
-                    '@':{
-                        controller:'GameController',
-                        templateUrl:'components/game/gameView.html'
+                    '@': {
+                        controller: 'GameController',
+                        templateUrl: 'components/game/gameView.html'
                     }
                 }
             })
 
             .state('login', {
-                url:'/login',
-                parent:'root',
+                url: '/login',
+                parent: 'root',
                 views: {
                     '@': {
-                        controller:'LoginController',
-                        templateUrl:'components/login/loginView.html'
+                        controller: 'LoginController',
+                        templateUrl: 'components/login/loginView.html'
                     }
                 }
             })
 
             .state('logout', {
-                url:'/logout',
-                parent:'root',
+                url: '/logout',
+                parent: 'root',
                 views: {
                     '@': {
-                        controller:'LogoutController',
-                        templateUrl:'components/logout/logoutView.html'
+                        controller: 'LogoutController',
+                        templateUrl: 'components/logout/logoutView.html'
                     }
                 }
             })
 
             .state('report', {
-                url:'/report',
-                parent:'root',
+                url: '/report',
+                parent: 'root',
                 views: {
-                    '@': {
-                        controller:'ReportController',
-                        templateUrl:'components/report/reportView.html'
+                    'report@': {
+                        controller: 'ReportController',
+                        templateUrl: 'components/report/reportView.html'
+                    },
+                    'winloss@': {
+                        controller: 'WinLossController',
+                        templateUrl: 'components/winloss/winlossView.html'
+                    },
+                    'games@': {
+                        controller: 'GameController',
+                        templateUrl: 'components/game/gameView.html'
+                    },
+                    'player@': {
+                        controller: 'PlayerController',
+                        templateUrl: 'components/player/playerView.html'
                     }
                 }
             })
 
             .state('file', {
-                url:'/file/:id',
-                parent:'root',
+                url: '/file/:id',
+                parent: 'root',
                 views: {
                     '@': {
-                        controller:'FileController',
-                        templateUrl:'components/file/fileView.html'
+                        controller: 'FileController',
+                        templateUrl: 'components/file/fileView.html'
                     }
                 }
             })
 
             .state('winloss', {
-                url:'/winloss',
-                parent:'root',
+                url: '/winloss',
+                parent: 'root',
                 views: {
                     '@': {
-                        controller:'WinLossController',
-                        templateUrl:'components/winloss/winlossView.html'
+                        controller: 'WinLossController',
+                        templateUrl: 'components/winloss/winlossView.html'
                     }
                 }
+            })
+            .state('winloss.test', {
+                templateUrl: 'components/winloss/winlossView.html'
             })
 
             .state('winlossdetails', {
                 url: '/winlossdetails/:id',
-                parent:'root',
+                parent: 'root',
                 views: {
                     '@': {
-                        controller:'WinLossDetailsController',
-                        templateUrl:'components/winlossdetails/winlossdetailsView.html'
+                        controller: 'WinLossDetailsController',
+                        templateUrl: 'components/winlossdetails/winlossdetailsView.html'
                     }
                 }
             })
 
             .state('games', {
-                url:'/games',
-                parent:'root',
+                url: '/games',
+                parent: 'root',
                 views: {
                     '@': {
-                        controller:'GameController',
-                        templateUrl:'components/game/gameView.html'
+                        controller: 'GameController',
+                        templateUrl: 'components/game/gameView.html'
                     }
                 }
             })
 
             .state('game_details', {
                 url: '/game_details/:id',
-                parent:'root',
+                parent: 'root',
                 views: {
                     '@': {
-                        controller:'GameDetailsController',
-                        templateUrl:'components/game_details/GameDetailsView.html'
+                        controller: 'GameDetailsController',
+                        templateUrl: 'components/game_details/GameDetailsView.html'
+                    }
+                }
+            })
+
+            .state('testxyz', {
+                parent: 'root',
+                url:'/testxyz',
+                views: {
+                    'filters@': {
+                        template: '<h1> Filter test</h1>'
+                    },
+                    'tabledata@': {
+                        template:'<h1>Table Data </h1>'
                     }
                 }
             })

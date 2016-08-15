@@ -31,13 +31,9 @@ class GameController extends Controller
         $arrFields = [
             'id',
             'member',
-            'bet_reference',
-            'bet_time',
-            'table_number',
             'game',
-            'effective_bet_amount',
             'casino_win_loss',
-            'month',
+            'balance'
         ];
 
         // get data with necessary fields only

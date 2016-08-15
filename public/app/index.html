@@ -26,15 +26,20 @@
 
 <div class="container">
     <div class="row">
-        <!-- Menu -->
-        <div ui-view="menu"></div>
+        <div class="col s12">
+            <!-- Menu -->
+            <div ui-view="menu"></div>
 
-        <!-- Page Layout here -->
-        <div ui-view></div>
-
-        <div ui-view="footer"></div>
+            <!-- Page Layout here -->
+            <div ui-view></div>
+            <div ui-view="report"></div>
+            <div ui-view="winloss"></div>
+            <div ui-view="games"></div>
+            <div ui-view="player"></div>
+        </div>
     </div>
 </div>
+<div ui-view="footer"></div>
 
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -85,5 +90,10 @@
 <script type="text/javascript" src="components/winlossdetails/winlossdetailsService.js"></script>
 <script type="text/javascript" src="components/playerdetails/playerdetailsService.js"></script>
 
+<script>
+    $(document).ready(function(){
+        $('ul.tabs').tabs();
+    });
+</script>
 </body>
 </html>
