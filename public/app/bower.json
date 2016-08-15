@@ -1,0 +1,35 @@
+{
+  "name": "backdoor",
+  "main": "app.js",
+  "authors": [
+    "apollomm <amalapote@gmail.com>"
+  ],
+  "description": "generate report",
+  "keywords": [
+    "backdoor"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Materialize": "materialize#^0.97.6",
+    "angular-cookies": "^1.5.6",
+    "angular-resource": "^1.5.6",
+    "angular-file-upload": "^2.3.4",
+    "angular-material": "^1.0.9",
+    "lodash": "^4.13.1",
+    "moment-timezone": "^0.5.4",
+    "angular-ui-router": "^0.3.0",
+    "toastr": "^2.1.2",
+    "js-md5": "md5#^0.4.1",
+    "animate.css": "^3.5.2",
+    "ngInfiniteScroll": "1.0.0"
+  }
+}
