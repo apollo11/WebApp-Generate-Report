@@ -11,6 +11,22 @@ use DB;
 class WinLossController extends Controller
 {
     protected $fileName;
+    protected $fields;
+
+    public function __construct ()
+    {
+        // initialize necessary fields
+        $this->fields = [
+            'id',
+            'bet_time',
+            'game',
+            'effective_bet_amount',
+            'casino_win_loss',
+            'month',
+            'balance'
+        ];
+    }
+
 
     /**
      * Display a listing of the resource.
@@ -53,20 +69,20 @@ class WinLossController extends Controller
      */
     public function show($id = null)
     {
-        // initialize necessary fields
-        $arrFields = [
-            'id',
-            'bet_time',
-            'game',
-            'effective_bet_amount',
-            'casino_win_loss',
-            'month',
-            'balance'
-        ];
+        $winLoss = new WinLoss();
 
         // get data with necessary fields only
+        $winLossData = $winLoss->getDataById($this->fields, $id);
+
+        return $this->createJsonResponse($winLossData);
+    }
+
+    public function showFile($filename)
+    {
         $winLoss = new WinLoss();
-        $winLossData = $winLoss->getData($arrFields, $id);
+
+        // get data with necessary fields only
+        $winLossData = $winLoss->getDataByFileName($this->fields, $filename);
 
         return $this->createJsonResponse($winLossData);
     }

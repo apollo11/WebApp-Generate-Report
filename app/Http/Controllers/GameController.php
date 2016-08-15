@@ -9,6 +9,20 @@ use BackDoor\WinLoss as WinLoss;
 class GameController extends Controller
 {
 
+    protected $fields;
+
+    public function __construct()
+    {
+        // necessary fields for games
+        $this->fields = [
+            'id',
+            'member',
+            'game',
+            'casino_win_loss',
+            'balance'
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -28,19 +42,22 @@ class GameController extends Controller
      */
     public function show($id = null)
     {
-        $arrFields = [
-            'id',
-            'member',
-            'game',
-            'casino_win_loss',
-            'balance'
-        ];
+        $winLoss = new WinLoss();
 
         // get data with necessary fields only
-        $winLoss = new WinLoss();
-        $winLossData = $winLoss->getData($arrFields, $id);
+        $gameData = $winLoss->getDataById($this->fields, $id);
 
-        return $this->createJsonResponse($winLossData);
+        return $this->createJsonResponse($gameData);
+    }
+
+    public function showFile($filename)
+    {
+        $winLoss = new WinLoss();
+
+        // get data with necessary fields only
+        $gameData = $winLoss->getDataByFileName($this->fields, $filename);
+
+        return $this->createJsonResponse($gameData);
     }
 
 }

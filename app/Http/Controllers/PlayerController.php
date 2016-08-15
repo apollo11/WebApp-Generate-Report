@@ -9,14 +9,13 @@ use BackDoor\WinLoss as WinLoss;
 
 class PlayerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    protected $fields;
+
+    public function __construct()
     {
-        $field = [
+        // necessary fields for player
+        $this->fields = [
             'id',
             'member',
             'bet_time',
@@ -27,9 +26,18 @@ class PlayerController extends Controller
             'win_loss',
             'month'
         ];
+    }
 
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
         $playerData = DB::table('win_losses')
-          ->select($field)
+          ->select($this->fields)
           ->get();
 
         return response()->json($playerData);
@@ -64,20 +72,17 @@ class PlayerController extends Controller
      */
     public function show($id = null)
     {
-        $arrFields = [
-          'id',
-          'member',
-          'bet_time',
-          'datetime',
-          'table_number',
-          'game',
-          'effective_bet_amount',
-          'win_loss',
-          'month'
-        ];
 
-        $player = new WinLoss();
-        $playerData = $player->getData($arrFields, $id);
+        $winLoss = new WinLoss();
+        $playerData = $winLoss->getDataById($this->fields, $id);
+
+        return $this->createJsonResponse($playerData);
+    }
+
+    public function showFile($filename)
+    {
+        $winLoss = new WinLoss();
+        $playerData = $winLoss->getDataByFileName($this->fields, $filename);
 
         return $this->createJsonResponse($playerData);
     }
