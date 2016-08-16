@@ -12,7 +12,7 @@ app.controller('MenuController',
             $scope.title = 'Menu';
 
             if(!_.isUndefined($state.params)) {
-                $scope.testXyz = $state.params.file;
+                $scope.fileName = $state.params.file;
             }
 
 

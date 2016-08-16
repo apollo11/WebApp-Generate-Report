@@ -17,12 +17,6 @@ app.config(['$stateProvider'
             .state('root', {
                 abstract: true,
                 views: {
-
-                    'menu': {
-                        controller: 'MenuController',
-                        templateUrl: 'components/menu/menuView.html'
-                    },
-
                     'footer': {
                         controller: 'FooterController',
                         templateUrl: 'components/footer/footerView.html'
@@ -39,7 +33,6 @@ app.config(['$stateProvider'
                         templateUrl: 'components/fileupload/fileuploadView.html'
                     }
                 }
-
             })
 
             .state('player', {
@@ -49,6 +42,11 @@ app.config(['$stateProvider'
                     '@': {
                         controller: 'PlayerController',
                         templateUrl: 'components/player/playerView.html'
+                    },
+
+                    'menu@': {
+                        controller: 'MenuController',
+                        templateUrl: 'components/menu/menuView.html'
                     }
                 }
             })
@@ -60,6 +58,10 @@ app.config(['$stateProvider'
                     '@': {
                         controller: 'PlayerDetailsController',
                         templateUrl: 'components/playerdetails/playerdetailsView.html'
+                    },
+                    'menu@': {
+                        controller: 'MenuController',
+                        templateUrl: 'components/menu/menuView.html'
                     }
                 }
             })
@@ -71,6 +73,10 @@ app.config(['$stateProvider'
                     '@': {
                         controller: 'GameController',
                         templateUrl: 'components/game/gameView.html'
+                    },
+                    'menu@': {
+                        controller: 'MenuController',
+                        templateUrl: 'components/menu/menuView.html'
                     }
                 }
             })
@@ -138,11 +144,12 @@ app.config(['$stateProvider'
                     '@': {
                         controller: 'WinLossController',
                         templateUrl: 'components/winloss/winlossView.html'
+                    },
+                    'menu@': {
+                        controller: 'MenuController',
+                        templateUrl: 'components/menu/menuView.html'
                     }
                 }
-            })
-            .state('winloss.test', {
-                templateUrl: 'components/winloss/winlossView.html'
             })
 
             .state('winlossdetails', {
@@ -152,6 +159,10 @@ app.config(['$stateProvider'
                     '@': {
                         controller: 'WinLossDetailsController',
                         templateUrl: 'components/winlossdetails/winlossdetailsView.html'
+                    },
+                    'menu@': {
+                        controller: 'MenuController',
+                        templateUrl: 'components/menu/menuView.html'
                     }
                 }
             })
@@ -163,6 +174,10 @@ app.config(['$stateProvider'
                     '@': {
                         controller: 'GameController',
                         templateUrl: 'components/game/gameView.html'
+                    },
+                    'menu@': {
+                        controller: 'MenuController',
+                        templateUrl: 'components/menu/menuView.html'
                     }
                 }
             })
@@ -174,6 +189,10 @@ app.config(['$stateProvider'
                     '@': {
                         controller: 'GameDetailsController',
                         templateUrl: 'components/game_details/GameDetailsView.html'
+                    },
+                    'menu@': {
+                        controller: 'MenuController',
+                        templateUrl: 'components/menu/menuView.html'
                     }
                 }
             })
