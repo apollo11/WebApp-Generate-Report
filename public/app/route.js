@@ -12,7 +12,7 @@ app.config(['$stateProvider'
         $locationProvider.hashPrefix('!');
 
         //For unmatched url, redirect to /state1
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/fileupload');
         $stateProvider
             .state('root', {
                 abstract: true,
