@@ -1,7 +1,13 @@
 /**
  * Created by apollomm on 7/28/16.
  */
-app.controller('FileUploadController',['$scope', 'FileUploader','file', function($scope, FileUploader, file) {
+app.controller('FileUploadController',
+    [
+        '$scope'
+        , 'FileUploader'
+        , 'file'
+        , '$window'
+        ,  function($scope, FileUploader, file, $window) {
 
     var uploader = $scope.uploader = new FileUploader({
 
@@ -57,9 +63,10 @@ app.controller('FileUploadController',['$scope', 'FileUploader','file', function
     //uploader.onCompleteItem = function(fileItem, response, status, headers) {
     //    console.info('onCompleteItem', fileItem, response, status, headers);
     //};
-    //uploader.onCompleteAll = function() {
-    //    console.info('onCompleteAll');
-    //};
+    uploader.onCompleteAll = function() {
+        console.info('onCompleteAll');
+        $window.reload();
+    };
     //
     //console.info('uploader', uploader);
 

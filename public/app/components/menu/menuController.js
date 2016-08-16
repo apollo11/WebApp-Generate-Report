@@ -2,8 +2,18 @@
  * Created by apollomm on 7/28/16.
  */
 'use strict';
-app.controller('MenuController',['$scope', function ($scope) {
+app.controller('MenuController',
+    [
+        '$scope'
+        ,'$stateParams'
+        ,'$state'
+        , function ($scope, $stateParams, $state) {
 
-    $scope.title = 'Menu';
+            $scope.title = 'Menu';
+
+            if(!_.isUndefined($state.params)) {
+                $scope.testXyz = $state.params.file;
+            }
+
 
 }]);

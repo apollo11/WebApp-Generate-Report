@@ -43,7 +43,7 @@ app.config(['$stateProvider'
             })
 
             .state('player', {
-                url: '/player',
+                url: '/player/:file',
                 parent: 'root',
                 views: {
                     '@': {
@@ -65,7 +65,7 @@ app.config(['$stateProvider'
             })
 
             .state('game', {
-                url: '/game',
+                url: '/game/:file',
                 parent: 'root',
                 views: {
                     '@': {
@@ -132,7 +132,7 @@ app.config(['$stateProvider'
             })
 
             .state('winloss', {
-                url: '/winloss',
+                url: '/winloss/:file',
                 parent: 'root',
                 views: {
                     '@': {
@@ -157,7 +157,7 @@ app.config(['$stateProvider'
             })
 
             .state('games', {
-                url: '/games',
+                url: '/games/:file',
                 parent: 'root',
                 views: {
                     '@': {
