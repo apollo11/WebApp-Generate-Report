@@ -6,8 +6,7 @@ app.controller('FileUploadController',
         '$scope'
         , 'FileUploader'
         , 'file'
-        , '$window'
-        ,  function($scope, FileUploader, file, $window) {
+        ,  function($scope, FileUploader, file) {
 
     var uploader = $scope.uploader = new FileUploader({
 
@@ -65,7 +64,6 @@ app.controller('FileUploadController',
     //};
     uploader.onCompleteAll = function() {
         console.info('onCompleteAll');
-        $window.reload();
     };
     //
     //console.info('uploader', uploader);
